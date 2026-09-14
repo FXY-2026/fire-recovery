@@ -69,8 +69,7 @@ def train_rf_spatial(
                 "min_samples_split": trial.suggest_int("min_samples_split", 5, 20),
                 "max_features": trial.suggest_categorical("max_features", ["sqrt", "log2"]),
                 "class_weight": trial.suggest_categorical("class_weight", ["balanced", None]),
-                "random_state": random_state,
-                "n_jobs": -1
+                "random_state": random_state
             }
             aucs = []
             cv = GroupKFold(n_splits=5)
@@ -89,7 +88,7 @@ def train_rf_spatial(
         study.optimize(objective, n_trials=n_trials, show_progress_bar=False)
 
         best_params = study.best_params
-        best_params.update({"random_state": random_state, "n_jobs": -1})
+        best_params.update({"random_state": random_state})
 
         rf = RandomForestClassifier(**best_params).fit(X_train, y_train)
 
