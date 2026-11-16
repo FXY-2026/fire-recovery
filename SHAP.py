@@ -1,45 +1,19 @@
 
-import pandas as pd
+import numpy as np
 import shap
-import joblib
 
 
-def compute_shap_values(
-    metric: str = "MTR",
-    groups: list = None,
-    model_prefix: str = "rf_model_",
-    xtest_prefix: str = "X_test_",
-    output_prefix: str = "SHAP_values_"
-):
-    """
-    Parameters
-    ----------
-    metric : str
-        "MTR" or "RR"
-    groups : list
-        Default ["Forest", "NonForest"]
-    """
-    if groups is None:
-        groups = ["Forest", "NonForest"]
+def compute_shap_values(model, X_test):
+    explainer = shap.TreeExplainer(model)
+    shap_values = explainer.shap_values(X_test)
 
-    results = {}
+    positive_idx = list(model.classes_).index(1)
 
-    for group_name in groups:
-        tag = f"{metric}_{group_name}"
+    if isinstance(shap_values, list):
+        shap_values = shap_values[positive_idx]
+    else:
+        shap_values = np.asarray(shap_values)
+        if shap_values.ndim == 3:
+            shap_values = shap_values[:, :, positive_idx]
 
-        rf = joblib.load(f"{model_prefix}{tag}.joblib")
-        X_test = pd.read_csv(f"{xtest_prefix}{tag}.csv")
-
-        explainer = shap.TreeExplainer(rf)
-        sv = explainer.shap_values(X_test)
-        sv = sv[:, :, 1]           
-
-        shap_df = pd.DataFrame(sv, columns=X_test.columns)
-        shap_df.to_csv(f"{output_prefix}{tag}.csv", index=False)
-
-        results[group_name] = {
-            "shap_values": shap_df,
-            "feature_names": list(X_test.columns)
-        }
-
-    return results
+    return shap_values
