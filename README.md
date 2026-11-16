@@ -4,7 +4,7 @@ This repository contains the key analysis code and documentation for the study:
 
 **“Recovery-period hydroclimate modulates ecosystem-dependent asynchrony in post-fire carbon–water recovery across Australia”**
 
-*Currently under review for Global Change Biology.*
+*Currently under review.*
 
 ---
 
