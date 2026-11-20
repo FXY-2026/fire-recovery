@@ -26,7 +26,7 @@ All datasets used in this study are openly accessible online:
   [Global Ecology Group, UNH](https://globalecology.unh.edu/data/GOSIF-GPP.html)
 
 - **PMLv2 (ET and its components):**  
-  [Google Earth Engine](https://developers.google.com/earth-engine/datasets/catalog/projects_pml_evapotranspiration_PML_OUTPUT_PML_V22a)
+  [Google Earth Engine](https://doi.org/10.11888/Geogra.tpdc.270251)
 
 - **Flux Data (OzFlux):**  
   Obtained from the TERN OzFlux network.
