@@ -1,8 +1,8 @@
-# Recovery-period hydroclimate modulates ecosystem-dependent asynchrony in post-fire carbon–water recovery across Australia
+# Asynchronous post-fire carbon–water recovery across Australian ecosystems and hydroclimatic gradients
 
 This repository contains the key analysis code and documentation for the study:
 
-**“Recovery-period hydroclimate modulates ecosystem-dependent asynchrony in post-fire carbon–water recovery across Australia”**
+**“Asynchronous post-fire carbon–water recovery across Australian ecosystems and hydroclimatic gradients”**
 
 *Currently under review.*
 
